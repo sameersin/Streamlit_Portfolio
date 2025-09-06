@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sameer Shaik - Machine Learning Engineer Portfolio</title>
+    <style>
+        :root {
+            --primary: #2d46b9;
+            --primary-light: #3f5dd6;
+            --secondary: #34d399;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #9ca3af;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+            opacity: 0.8;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            z-index: 1;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+            height: 45px;
+            width: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icon {
+            font-size: 1.3rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: var(--gray);
+        }
+        
+        .professional-summary {
+            background-color: white;
+            padding: 3rem 0;
+        }
+        
+        .summary-content {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .summary-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .skills {
+            background-color: #f3f4f6;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .experience {
+            background-color: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 10px 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item.left {
+            left: 0;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-item.left .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 22px;
+            right: -15px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid white;
+        }
+        
+        .timeline-item.right .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 22px;
+            left: -15px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid white;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item.left::after {
+            right: -14px;
+        }
+        
+        .timeline-item.right::after {
+            left: -14px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .timeline-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+        
+        .timeline-content ul {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+        
+        .timeline-content ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .timeline-content ul li::before {
+            content: '•';
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .timeline-content ul.collapsed {
+            max-height: 130px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .show-more-btn {
+            background-color: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .show-more-btn:hover {
+            background-color: var(--primary);
+        }
+        
+        .projects {
+            background-color: #f3f4f6;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .project-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .project-tools {
+            margin-bottom: 1rem;
+        }
+        
+        .project-tools strong {
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .project-tech span {
+            background-color: #f3f4f6;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .project-achievements {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        
+        .project-achievements ul {
+            list-style-type: none;
+            margin: 0;
+        }
+        
+        .project-achievements ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .project-achievements ul li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .education {
+            background-color: white;
+        }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .education-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: var(--transition);
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .education-card p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-card .degree {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .contact {
+            background-color: #f3f4f6;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+        
+        .contact-form {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                order: 2;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline-item.left::after, .timeline-item.right::after {
+                left: 18px;
+            }
+            
+            .timeline-item.left .timeline-content::after {
+                right: auto;
+                left: -15px;
+                border-right: 15px solid white;
+                border-left: 0;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Typing animation */
+        .typing {
+            position: relative;
+        }
+        
+        .typing::after {
+            content: '|';
+            position: absolute;
+            right: -5px;
+            animation: blink 0.7s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            background-color: var(--dark);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f9fafb;
+        }
+        
+        body.dark-mode .skill-card,
+        body.dark-mode .timeline-content,
+        body.dark-mode .project-card,
+        body.dark-mode .education-card,
+        body.dark-mode .contact-form,
+        body.dark-mode .contact-info,
+        body.dark-mode .summary-content {
+            background-color: #2d2d2d;
+            color: #f9fafb;
+        }
+        
+        body.dark-mode .section-title {
+            color: var(--secondary);
+        }
+        
+        body.dark-mode .timeline-item.left .timeline-content::after {
+            border-left-color: #2d2d2d;
+        }
+        
+        body.dark-mode .timeline-item.right .timeline-content::after {
+            border-right-color: #2d2d2d;
+        }
+        
+        body.dark-mode .form-control {
+            background-color: #3d3d3d;
+            border-color: #4d4d4d;
+            color: #f9fafb;
+        }
+        
+        body.dark-mode .project-tech span {
+            background-color: #3d3d3d;
+            color: #f9fafb;
+        }
+        
+        body.dark-mode .project-achievements {
+            background-color: #3d3d3d;
+        }
+        
+        body.dark-mode .contact-form div[style*="background-color: #f8f9fa"] {
+            background-color: #3d3d3d !important;
+        }
+        
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f4f6;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        🌓
+    </button>
+    
+    <!-- Header -->
+    <header id="home">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">Sameer Shaik</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#summary">Summary</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+            
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Hi, I'm <span class="typing-text"></span></h1>
+                    <p>Results-driven Machine Learning Engineer specializing in Generative AI with 5+ years of experience delivering innovative, scalable AI solutions.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                    
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/sameershaik78" target="_blank" aria-label="LinkedIn">
+                            <span class="social-icon">in</span>
+                        </a>
+                        <a href="mailto:sameerscientist@gmail.com" aria-label="Email">
+                            <span class="social-icon">✉</span>
+                        </a>
+                        <a href="tel:6502937571" aria-label="Phone">
+                            <span class="social-icon">📱</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Professional Summary Section -->
+    <section id="summary" class="professional-summary">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional Summary</h2>
+            <div class="summary-content fade-in">
+                <p>Results-driven Machine Learning Engineer with a Master's in Machine Learning from Stevens Institute of Technology and over 5 years of experience, specializing in generative AI and high-accuracy models like LSTM forecasting (92% precision across 250+ products at Panasonic). Proficient in Azure, Databricks, PyTorch, Hugging Face, and LangChain, I developed AI applications boosting efficiency by 50%. Passionate about leveraging Machine Learning, Generative AI, and NLP, I'm eager to deliver innovative, scalable AI solutions in a dynamic team.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            <p class="section-subtitle fade-in">Comprehensive technical stack and expertise across the AI/ML ecosystem</p>
+            
+            <div class="skills-container">
+                <div class="skill-card fade-in">
+                    <h3>Programming Languages & Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">NoSQL</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Alteryx</span>
+                        <span class="skill-tag">AutoML</span>
+                        <span class="skill-tag">MLFlow</span>
+                        <span class="skill-tag">SAP</span>
+                        <span class="skill-tag">SharePoint</span>
+                        <span class="skill-tag">Power Automate</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">DevOps</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Zapier</span>
+                        <span class="skill-tag">CrewAI</span>
+                        <span class="skill-tag">N8N</span>
+                        <span class="skill-tag">CoPilot</span>
+                        <span class="skill-tag">Cursor AI</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <h3>Packages & Libraries</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">Big Data</span>
+                        <span class="skill-tag">Hadoop</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Keras</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">HuggingFace</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LlamaIndex</span>
+                        <span class="skill-tag">Airflow</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <h3>Databases & Cloud Platforms</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">Redshift</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">BigQuery</span>
+                        <span class="skill-tag">Vector Databases</span>
+                        <span class="skill-tag">Azure Cloud</span>
+                        <span class="skill-tag">Databricks</span>
+                        <span class="skill-tag">Microsoft Fabrics</span>
+                        <span class="skill-tag">Azure Synapse</span>
+                        <span class="skill-tag">Azure Data Factory</span>
+                        <span class="skill-tag">Azure Data Lake</span>
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">QuickSight</span>
+                        <span class="skill-tag">S3</span>
+                        <span class="skill-tag">Glue</span>
+                        <span class="skill-tag">Lambda</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <h3>Technical & AI Expertise</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Agentic Workflow Automation</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">LLMs</span>
+                        <span class="skill-tag">Agent Orchestration</span>
+                        <span class="skill-tag">MCP</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">AI Testing</span>
+                        <span class="skill-tag">MLOps</span>
+                        <span class="skill-tag">CI/CD Pipelines</span>
+                        <span class="skill-tag">ETL/ELT Pipelines</span>
+                        <span class="skill-tag">Data Modeling</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">Data Mining</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Statistical Methods</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Predictive Modeling</span>
+                        <span class="skill-tag">Fast API</span>
+                        <span class="skill-tag">Agile Methodologies</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Innovative</span>
+                        <span class="skill-tag">Creative</span>
+                        <span class="skill-tag">Cross-functional Collaboration</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Customer-centric Mindset</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional Experience</h2>
+            <p class="section-subtitle fade-in">My journey in building innovative AI and ML solutions</p>
+            
+            <div class="timeline">
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jun 2024 - Jun 2025</span>
+                        <h3>Data Science & Business Intelligence Intern</h3>
+                        <h4>Panasonic Corporation of North America, Newark, NJ</h4>
+                        <ul class="collapsed">
+                            <li>Engineered a 6-month sales time-series forecasting model using LSTM networks achieving 92% accuracy across 250+ products</li>
+                            <li>Designed rigorous testing procedures for ML models using MLflow, streamlining model tracking and version control</li>
+                            <li>Developed comprehensive test plans for 5+ production-grade data validation frameworks</li>
+                            <li>Researched and evaluated 25+ cutting-edge AI tools, developed 3+ proof-of-concept Generative AI applications</li>
+                            <li>Built dynamic competitor analysis dashboard utilizing Power BI and Microsoft Fabric with 20,000+ rows of market data</li>
+                            <li>Collaborated with 12+ teams to standardize master data management processes, improving data quality by 25%</li>
+                        </ul>
+                        <button class="show-more-btn">Show More</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Aug 2022 - Jul 2023</span>
+                        <h3>Junior Data Scientist</h3>
+                        <h4>Innomatics Research Labs, Hyderabad, India</h4>
+                        <ul class="collapsed">
+                            <li>Pioneered research and implementation of cutting-edge data analytics methodologies, increasing productivity by 15%</li>
+                            <li>Performed analysis to identify KPIs and automated monthly dashboards to track performance trends</li>
+                            <li>Translated complex mathematical and statistical formulas into actionable insights for non-technical stakeholders</li>
+                            <li>Increased decision-making efficiency by 40% across various skill levels through effective communication</li>
+                        </ul>
+                        <button class="show-more-btn">Show More</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jul 2021 - Aug 2022</span>
+                        <h3>Business Intelligence Analyst</h3>
+                        <h4>Goldstone Technologies, Hyderabad, India</h4>
+                        <ul class="collapsed">
+                            <li>Engineered interactive data visualization dashboards in Tableau tracking 10+ KPIs, driving 25% revenue increase</li>
+                            <li>Managed end-to-end development of dashboards, gathering stakeholder requirements and translating business needs</li>
+                            <li>Developed interactive Tableau dashboard for large-scale wellness medicine healthcare dataset analysis</li>
+                        </ul>
+                        <button class="show-more-btn">Show More</button>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jan 2021 - Dec 2023</span>
+                        <h3>Founder and COO</h3>
+                        <h4>Ekdham Brand Pvt Ltd, Hyderabad, India</h4>
+                        <ul class="collapsed">
+                            <li>Orchestrated day-to-day operations and built scalable business processes using data-driven marketing strategies</li>
+                            <li>Boosted conversion rates by 50% through targeted promotional campaigns and increased revenue by 75%</li>
+                            <li>Championed end-to-end management from deal capture to product delivery, streamlining workflows</li>
+                            <li>Delivered over 15,000+ products, generating ₹2M in revenue with a 45% profit margin</li>
+                        </ul>
+                        <button class="show-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <p class="section-subtitle fade-in">Innovative AI/ML solutions delivering real-world impact</p>
+            
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <h3>6 Months Sales Forecast using LSTM</h3>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Role:</strong> Data Science and BI Intern | <strong>Company:</strong> Panasonic Corporation</p>
+                        <div class="project-tools">
+                            <strong>Tools:</strong> Databricks, Azure Data Factory, MLflow, PyTorch, LSTM, Random Forest, TFT, PCA
+                        </div>
+                        <div class="project-achievements">
+                            <ul>
+                                <li>Executed 250+ experimental runs using LSTM and Temporal Fusion Transformer models</li>
+                                <li>Achieved up to 92% forecast accuracy in sales predictions across 230+ product-distributor pairs</li>
+                                <li>Introduced MLflow reducing model versioning errors by 60% and increasing collaboration efficiency</li>
+                                <li>Delivered insights driving 20% improvement in planning accuracy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🤖</div>
+                        <h3>AI Transition Support for Organizational Enablement</h3>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Role:</strong> Data Science and BI Intern | <strong>Company:</strong> Panasonic Corporation</p>
+                        <div class="project-tools">
+                            <strong>Tools:</strong> Azure Copilot, LLMs, Automation, Agentic workflows, AI chatbots, Generative AI
+                        </div>
+                        <div class="project-achievements">
+                            <ul>
+                                <li>Spearheaded integration of Generative AI technologies across Panasonic by piloting AI chatbot implementations</li>
+                                <li>Designed scalable automation workflows for enterprise-grade chatbot solutions supporting 100+ employees</li>
+                                <li>Developed RAG pipelines integrating vector stores (FAISS) improving response relevance by 30%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🏥</div>
+                        <h3>Scalable Predictive Analytics for Adverse Drug Effects</h3>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Role:</strong> ML Research Assistant | <strong>Company:</strong> Stevens Institute of Technology</p>
+                        <div class="project-tools">
+                            <strong>Tools:</strong> GCP, BigQuery, PySpark, Databricks, Power BI, Machine Learning, MLFlow, AutoML
+                        </div>
+                        <div class="project-achievements">
+                            <ul>
+                                <li>Achieved 92.82% accuracy in adverse drug effect classification using Random Forest on 4M+ records</li>
+                                <li>Enhanced drug safety monitoring using FDA Adverse Event Reporting System (FAERS)</li>
+                                <li>Designed interactive Power BI dashboards analyzing trends in side effects and high-risk drugs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🔄</div>
+                        <h3>Data Migration and Validation - ADLS to Azure Lakehouse</h3>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Role:</strong> Data Science and BI Intern | <strong>Company:</strong> Panasonic Corporation</p>
+                        <div class="project-tools">
+                            <strong>Tools:</strong> Generative AI, Microsoft Fabrics, PySpark, Azure Data Lakehouse, Dataflow Gen 2
+                        </div>
+                        <div class="project-achievements">
+                            <ul>
+                                <li>Engineered robust data validation framework on production data in Medallion architecture</li>
+                                <li>Automated schema checks and validation rules across 250+ Delta tables with 99% data accuracy</li>
+                                <li>Automated dictionary generation using OpenAI's LLM reducing manual effort by 60%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">📈</div>
+                        <h3>Marketing Data Validation and Monitoring Pipeline</h3>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Role:</strong> Data Science and BI Intern | <strong>Company:</strong> Innomatics Research Labs</p>
+                        <div class="project-tools">
+                            <strong>Tools:</strong> Visio, Excel, SQL Server, Power BI
+                        </div>
+                        <div class="project-achievements">
+                            <ul>
+                                <li>Collaborated with Marketing department to validate advertising impressions across GAM, CM360, DV360</li>
+                                <li>Developed automated ETL pipeline using Azure Data Factory and PySpark</li>
+                                <li>Improved operational reliability by 35% and reduced manual monitoring efforts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">⚙️</div>
+                        <h3>Master Data Management</h3>
+                    </div>
+                    <div class="project-content">
+                        <p><strong>Role:</strong> Data Science and BI Intern | <strong>Company:</strong> Panasonic Corporation</p>
+                        <div class="project-tools">
+                            <strong>Tools:</strong> Visio, Excel, SQL Server, Power BI
+                        </div>
+                        <div class="project-achievements">
+                            <ul>
+                                <li>Led standardization efforts across 6+ departments mapping 20+ product lifecycle workflows</li>
+                                <li>Achieved 30-40% decrease in coordination time and 20% boost in SAP data update accuracy</li>
+                                <li>Developed scalable framework introducing automation-ready proposals including Power Apps integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <p class="section-subtitle fade-in">Academic foundation in machine learning and engineering</p>
+            
+            <div class="education-grid">
+                <div class="education-card fade-in">
+                    <h3>Stevens Institute of Technology</h3>
+                    <p>Hoboken, NJ</p>
+                    <p class="degree">Master of Science in Machine Learning</p>
+                    <p>GPA: 3.83/4.0</p>
+                    <p>September 2023 - May 2025</p>
+                </div>
+                
+                <div class="education-card fade-in">
+                    <h3>VNR Vignana Jyothi Institute of Technology</h3>
+                    <p>Hyderabad, India</p>
+                    <p class="degree">Bachelor of Technology, Electrical and Electronics Engineering</p>
+                    <p>GPA: 7.65/10</p>
+                    <p>August 2018 - July 2022</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <p class="section-subtitle fade-in">Let's collaborate on innovative AI solutions</p>
+            
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+1 (650) 293-7571</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>sameerscientist@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>New York City, NY, USA</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i>💼</i>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p><a href="https://linkedin.com/in/sameershaik78" target="_blank" style="color: var(--primary); text-decoration: none;">Connect with me</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sameer Shaik. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">↑</div>
+    
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+        
+        // Typing Animation
+        const roles = [
+            "Sameer Shaik",
+            "ML Engineer",
+            "Data Scientist", 
+            "Generative AI Engineer",
+            "BI Engineer",
+            "AI Solutions Architect"
+        ];
+        
+        function typeWriter(text, i, element, roleIndex) {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(() => typeWriter(text, i, element, roleIndex), 100);
+            } else {
+                setTimeout(() => {
+                    deleteText(element, roleIndex);
+                }, 2000);
+            }
+        }
+        
+        function deleteText(element, roleIndex) {
+            if (element.innerHTML.length > 0) {
+                element.innerHTML = element.innerHTML.substring(0, element.innerHTML.length - 1);
+                setTimeout(() => deleteText(element, roleIndex), 50);
+            } else {
+                const nextRoleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(() => typeWriter(roles[nextRoleIndex], 0, element, nextRoleIndex), 500);
+            }
+        }
+        
+        const typingText = document.querySelector('.typing-text');
+        if (typingText) {
+            typingText.classList.add('typing');
+            typeWriter(roles[0], 0, typingText, 0);
+        }
+        
+        // Scroll Animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('appear');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+        
+        // Show More functionality for experience timeline
+        document.querySelectorAll('.show-more-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const ul = this.previousElementSibling;
+                if (ul.classList.contains('collapsed')) {
+                    ul.classList.remove('collapsed');
+                    this.textContent = 'Show Less';
+                } else {
+                    ul.classList.add('collapsed');
+                    this.textContent = 'Show More';
+                }
+            });
+        });
+        
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Save theme preference
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
